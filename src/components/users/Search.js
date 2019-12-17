@@ -10,7 +10,7 @@ class Search extends Component {
     searchUsers: PropTypes.func.isRequired,
     clearUsers: PropTypes.func.isRequired,
     showClear: PropTypes.bool.isRequired,
-    showAlert: PropTypes.func.isRequired
+    setAlert: PropTypes.func.isRequired
   }
 
   onChange = (e) => this.setState({ text: e.target.value })
@@ -19,6 +19,7 @@ class Search extends Component {
     e.preventDefault()
     if (this.state.text === '') {
       this.props.setAlert('Oops, you forgot to search for something...', 'light')
+      // msg, type (args); light is a grey color
     } else {
       this.props.searchUsers(this.state.text)
       this.setState({ text: '' })      
