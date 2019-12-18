@@ -1,8 +1,17 @@
 import React, { Component } from 'react'
+import Spinner from '../layout/Spinner'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 export class User extends Component {
   componentDidMount() {
     this.props.getUser(this.props.match.params.login)
+  }
+
+  static propTypes = {
+    loading: PropTypes.bool,
+    user: PropTypes.object.isRequired,
+    getUser: PropTypes.func.isRequired,
   }
 
   render() {
@@ -13,6 +22,7 @@ export class User extends Component {
       location, 
       bio, 
       blog, 
+      company,
       login, 
       html_url, 
       followers, 
@@ -23,22 +33,37 @@ export class User extends Component {
     } = this.props.user
 
     const { loading } = this.props
-    return (
-      <div>
-        {name} 
-        {avatar_url} 
-        {location} 
-        {bio} 
-        {blog} 
-        {login} 
-        {html_url} 
-        {followers} 
-        {following} 
-        {public_repos} 
-        {public_gists} 
-        {hireable }
 
-      </div>
+    if (loading) return <Spinner  />
+
+    return (
+      <>
+        <Link to='/' className='btn btn-light'>Back to search</Link>
+        Hireable: {' '}
+        {hireable ? <i className='fas fa-check text-success'></i> : <i className='fas fa-times-circle text-danger'></i> }
+        <div className='card grid-2'>
+          <div className='all-center'>
+            <img src={avatar_url} className='round-img' alt='' style={{ width: '150px' }} /> 
+            <h1>{name}</h1>
+            <p>Location: {location}</p>
+          </div>
+          <div>
+            {bio && <><h3>Bio</h3><p>{bio}</p></>}
+            <a href={html_url} className="btn btn-dark my-1">Visit Github Profile</a>
+            <ul>
+              <li>
+                {login && <><strong>Username: </strong> {login}</>}
+              </li>
+              <li>
+                {company && <><strong>Username: </strong> {company}</>}
+              </li>
+              <li>
+                {blog && <><strong>Username: </strong> {blog}</>}
+              </li>
+            </ul>
+          </div>  
+        </div>
+      </>
     )
   }
 }
