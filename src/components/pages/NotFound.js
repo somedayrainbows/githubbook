@@ -2,9 +2,10 @@ import React from 'react';
 
 export const NotFound = () => {
 	return (
-		<div>
+		<>
+			<h3>Not found</h3>
 			<p>Uh oh, there's nothing here.</p>
-		</div>
+		</>
 	);
 };
 
