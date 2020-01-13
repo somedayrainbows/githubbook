@@ -1,9 +1,13 @@
 import React, { useState, useContext } from 'react'
-import PropTypes from 'prop-types'
 import GithubContext from '../../context/github/githubContext'
+import AlertContext from '../../context/alert/alertContext'
 
-const Search = ({ setAlert }) => {
+const Search = () => {
   const githubContext = useContext(GithubContext)
+  const alertContext = useContext(AlertContext)
+  
+  const { searchUsers, clearUsers, users } = githubContext
+  const { setAlert } = alertContext
 
   const [text, setText]  = useState('')
 
@@ -15,12 +19,12 @@ const Search = ({ setAlert }) => {
       setAlert('Oops, you forgot to search for something...', 'light')
       // msg, type (args); light is a grey color
     } else {
-      githubContext.searchUsers(text)
+      searchUsers(text)
       setText('')      
     }
   }
 
-  const clearButton = <button className="btn btn-light btn-block" onClick={githubContext.clearUsers}>Clear</button>
+  const clearButton = <button className="btn btn-light btn-block" onClick={clearUsers}>Clear</button>
   
   return (
     <div>
@@ -28,13 +32,9 @@ const Search = ({ setAlert }) => {
         <input type="text" name="text" placeholder="search users"  value={text} onChange={onChange} />
         <input type="submit" value="search" className="btn btn-dark btn-block" />
       </form>
-      {githubContext.users.length > 0 && clearButton }
+      {users.length > 0 && clearButton }
     </div>
   )
-}
-
-Search.propTypes = {
-  setAlert: PropTypes.func.isRequired
 }
 
 export default Search
