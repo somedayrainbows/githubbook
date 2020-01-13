@@ -6,17 +6,12 @@ import User from './components/users/User'
 import Search from './components/users/Search'
 import Alert from './components/layout/Alert'
 import About from './components/pages/About'
-import axios from 'axios'
 
 import GithubState from './context/github/githubState'
 
 import './App.css';
 
 const App = () => {
-  const [users, setUsers] = useState([])
-  const [user, setUser] = useState({})
-  const [repos, setRepos] = useState([])
-  const [loading, setLoading] = useState(false)
   const [alert, setAlert] = useState(null)
 
   const showAlert = (message, type) => {
@@ -35,21 +30,13 @@ const App = () => {
             <Route exact path='/' render={props => (
               <>
                 <Search 
-                  showClear={users.length > 0 ? true : false }
                   setAlert={showAlert}
                 />
-                <Users loading={loading} users={users} />
+                <Users />
               </>
             )} />
             <Route exact path='/about' component={About} />
-            <Route exact path='/user/:login' render={props => (
-              <User 
-                { ...props } 
-                user={user} 
-                repos={repos}
-                loading={loading} 
-              />
-            )} />
+            <Route exact path='/user/:login' component={User} />
           </Switch>
         </div>
       </div>

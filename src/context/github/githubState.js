@@ -60,22 +60,15 @@ const GithubState = props => {
   }
 
   //clear users
-  const clearUsers = () => {
-    dispatch({
-      type: CLEAR_USERS,
-      payload: []
-    })
-  }
+  const clearUsers = () => dispatch({ type: CLEAR_USERS })
 
   //set loading
-  const setLoading = () => {
-    dispatch({ type: SET_LOADING })
-  }
+  const setLoading = () => dispatch({ type: SET_LOADING })
 
   return <GithubContext.Provider
   value={{
     users: state.users,
-    user:  state.user,
+    user: state.user,
     repos: state.repos,
     loading: state.loading,
     searchUsers,
