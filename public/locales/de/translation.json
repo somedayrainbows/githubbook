@@ -1,3 +1,7 @@
 {
-  "welcome": "Hallo!"
+  "greeting": "Hallo",
+  "welcome": "Willkommen",
+  "de": "Deutsch",
+  "en": "Englisch",
+  "es": "Spanisch"
 }
