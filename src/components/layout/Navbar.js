@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
+// add i18n translations (hook or HOC)
+
 const Navbar = ({ icon, title }) => {
   
   return (
