@@ -2,6 +2,8 @@ import React, { useState, useContext } from 'react';
 import GithubContext from '../../context/github/githubContext';
 import AlertContext from '../../context/alert/alertContext';
 
+// implement i18n HOC here for translation
+
 const Search = () => {
 	const githubContext = useContext(GithubContext);
 	const alertContext = useContext(AlertContext);
