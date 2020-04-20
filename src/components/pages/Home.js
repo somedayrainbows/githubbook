@@ -4,23 +4,24 @@ import Search from '../../components/users/Search';
 import Users from '../../components/users/Users';
 
 export const Home = () => {
-	const { t, i18n } = useTranslation(['translation'])
+	const { t, i18n } = useTranslation()
 	
 	const changeLanguage = desiredLang => i18n.changeLanguage(desiredLang)
 
 	return (
 		<>
-			<button type="button" onClick={() => changeLanguage('es')}>
-				{t('translation:es')}
+			<button onClick={() => changeLanguage('es')}>
+				{t('es')}
 			</button>
-			<button type="button" onClick={() => changeLanguage('de')}>
-				{t('translation:de')}
+			<button onClick={() => changeLanguage('de')}>
+				{t('de')}
 			</button>
-			<button type="button" onClick={() => changeLanguage('en')}>
-				{t('translation:en')}
+			<button onClick={() => changeLanguage('en')}>
+				{t('en')}
 			</button>
-			<h2>{t('translation:greeting', 'Hello')}</h2>
-			<p>{t('translation:welcome', 'Welcome')}</p>
+			{/* {console.log(i18n.exists)} */}
+			<h2>{t('greeting', 'Hello')}</h2>
+			<p>{t('welcome', 'Welcome')}</p>
 			<Search />
 			<Users />
 		</>
