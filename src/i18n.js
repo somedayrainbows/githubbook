@@ -18,9 +18,8 @@ i18n
     // backend: {  // this is not necessary with default path below, but can be used for diff paths
     //   loadPath: '/locales/{{lng}}/{{ns}}.json',
     // },
-  }, (err, t) => {
+  }, (err) => {
     if (err) return console.log('something is wrong with i18next', err);
-    t('key');
   });
 
 export default i18n;

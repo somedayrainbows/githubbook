@@ -8,7 +8,6 @@ export const Home = () => {
 	
 	return (
 		<>
-			{/* {console.log(i18n.exists)} */}
 			<h2>{t('greeting', 'Hello')}</h2>
 			<p>{t('welcome', 'Welcome')}</p>
 			<Search />
