@@ -1,7 +1,13 @@
 {
   "greeting": "Hallo",
   "welcome": "Willkommen",
-  "de": "Deutsch",
-  "en": "Englisch",
-  "es": "Spanisch"
+  "german": "Deutsch",
+  "english": "Englisch",
+  "spanish": "Spanisch",
+  "about": "Über",
+  "version": "Ausführung",
+  "welcome_message": "Herzlich willkommen! Mit dieser Anwendung können Sie Github-Benutzer suchen. Es verbraucht die Github-API.",
+  "empty_search_error_message": "Hoppla, du hast vergessen, nach etwas zu suchen...",
+  "search_users_placeholder": "benutzer suchen",
+  "search_button_text": "suche"
 }

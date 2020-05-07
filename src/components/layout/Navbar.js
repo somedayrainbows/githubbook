@@ -1,17 +1,32 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
-
-// add i18n translations (hook or HOC)
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Navbar = ({ icon, title }) => {
+  const { t, i18n } = useTranslation()
+	
+	const handleClick = desiredLang => i18n.changeLanguage(desiredLang)
   
   return (
     <nav className="navbar bg-primary">
       <h1>
-        <i className={icon} /> {title}
+        <Link to='/'>
+          <i className={icon} /> {title}
+        </Link>
       </h1>
       <ul>
+        <li>
+          <button onClick={() => handleClick('es')}>
+            {t('spanish')}
+          </button>
+          <button onClick={() => handleClick('de')}>
+            {t('german')}
+          </button>
+          <button onClick={() => handleClick('en')}>
+            {t('english')}
+          </button>
+        </li>
         <li>
           <Link to='/'>Home</Link>
         </li>

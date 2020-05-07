@@ -1,13 +1,14 @@
 import React, { useState, useContext } from 'react';
 import GithubContext from '../../context/github/githubContext';
 import AlertContext from '../../context/alert/alertContext';
-
+import { useTranslation } from 'react-i18next';
 // implement i18n HOC here for translation
 
 const Search = () => {
 	const githubContext = useContext(GithubContext);
 	const alertContext = useContext(AlertContext);
-
+	const { t } = useTranslation();
+	
 	const { searchUsers, clearUsers, users } = githubContext;
 	const { setAlert } = alertContext;
 
@@ -18,7 +19,7 @@ const Search = () => {
 	const onSubmit = e => {
 		e.preventDefault();
 		if (text === '') {
-			setAlert('Oops, you forgot to search for something...', 'light');
+			setAlert(t('empty_search_error_message'), 'light');
 			// msg, type (args); light is a grey color
 		} else {
 			searchUsers(text);
@@ -38,13 +39,13 @@ const Search = () => {
 				<input
 					type='text'
 					name='text'
-					placeholder='search users'
+					placeholder={t('search_users_placeholder')}
 					value={text}
 					onChange={onChange}
 				/>
 				<input
 					type='submit'
-					value='search'
+					value={t('search_button_text')}
 					className='btn btn-dark btn-block'
 				/>
 			</form>
