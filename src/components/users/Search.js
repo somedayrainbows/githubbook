@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 const Search = () => {
 	const githubContext = useContext(GithubContext);
 	const alertContext = useContext(AlertContext);
-	const { t } = useTranslation();
+	const { t } = useTranslation('common');
 	
 	const { searchUsers, clearUsers, users } = githubContext;
 	const { setAlert } = alertContext;
@@ -29,7 +29,7 @@ const Search = () => {
 
 	const clearButton = (
 		<button className='btn btn-light btn-block' onClick={clearUsers}>
-			Clear
+			{t('clear')}
 		</button>
 	);
 
@@ -39,13 +39,13 @@ const Search = () => {
 				<input
 					type='text'
 					name='text'
-					placeholder={t('search_users_placeholder')}
+					placeholder={t('common:search_users_placeholder')}
 					value={text}
 					onChange={onChange}
 				/>
 				<input
 					type='submit'
-					value={t('search_button_text')}
+					value={t('common:search_button_text')}
 					className='btn btn-dark btn-block'
 				/>
 			</form>

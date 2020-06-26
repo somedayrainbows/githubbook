@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 const Navbar = ({ icon, title }) => {
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation(['common', 'labels'])
 	
 	const handleClick = desiredLang => i18n.changeLanguage(desiredLang)
   
@@ -16,22 +16,43 @@ const Navbar = ({ icon, title }) => {
         </Link>
       </h1>
       <ul>
-        <li>
-          <button onClick={() => handleClick('es')}>
-            {t('spanish')}
-          </button>
-          <button onClick={() => handleClick('de')}>
-            {t('german')}
-          </button>
-          <button onClick={() => handleClick('en')}>
-            {t('english')}
-          </button>
+        <li className="link">
+          <Link to='/'>{t('home')}</Link>
+        </li>
+        <li className="link">
+          <Link to='/about'>{t('about')}</Link>
         </li>
         <li>
-          <Link to='/'>Home</Link>
-        </li>
-        <li>
-          <Link to='/about'>About</Link>
+          {i18n.language === 'en' && 
+            <>
+              <button className='btn btn-light' onClick={() => handleClick('es')}>
+                {t('labels:spanish')}
+              </button>
+              <button className='btn btn-light' onClick={() => handleClick('de')}>
+                {t('labels:german')}
+              </button>
+            </>
+          }
+          {i18n.language === 'de' && 
+            <>
+              <button className='btn btn-light' onClick={() => handleClick('es')}>
+                {t('labels:spanish')}
+              </button>
+              <button className='btn btn-light' onClick={() => handleClick('en')}>
+              {t('labels:english')}
+              </button>
+            </>
+          }
+          {i18n.language === 'es' && 
+            <>
+              <button className='btn btn-light' onClick={() => handleClick('en')}>
+                {t('labels:english')}
+              </button>
+              <button className='btn btn-light' onClick={() => handleClick('de')}>
+                {t('labels:german')}
+              </button>
+            </>
+          }
         </li>
       </ul>
     </nav>

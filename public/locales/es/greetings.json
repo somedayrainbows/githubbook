@@ -1,0 +1,5 @@
+{
+  "greeting": "Hola",
+  "welcome": "Bienvenidos",
+  "welcome_message": "¡Bienvenidos! Puede usar esta aplicación para buscar usuarios de Github. Consume la API de Github."
+}
